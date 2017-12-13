@@ -11,7 +11,8 @@
 }
 // added for ajax call on contact form. 
 .collapse {
-  display: none;
+  visibility: hidden;
+  //display: none;
 }
 
 .user-projects {
