@@ -33,30 +33,14 @@
 <div class="user-details">
   <h1> Contact </h1>
   <form id="contact-form">
-    <div class="form-group center-block">
-      <label for="inputEmail">Email</label>
-      <input type="email" class="form-control contact-input" id="inputEmail" placeholder="Email" name="email" />
-    </div>
-    <div class="form-group center-block">
-      <label for="inputMessage">Message</label>
-      <textarea id="inputMessage" class="form-control contact-input" rows="3" placeholder="Leave a Message" name="message"></textarea>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-default" type="submit" value="Send">Submit</button>
-      <div class="alert alert-danger center-block submit-fail display-none">Please fill in all form fields
-        <br>
-        <a href="#">
-          <i class="fa fa-long-arrow-left fa-4x"></i>
-        </a>
-      </div>
-      <div class="alert alert-success center-block submit-success display-none">Thanks for stopping to say Hello!
-        <br>
-        <a href="#">
-          <i class="fa fa-long-arrow-left fa-4x"></i>
-        </a>
-      </div>
-    </div>
-    <span></span>
+             
+    <label for="email" hidden="true">Email</label>
+    <input class="form-control" type="email" name="_replyto"
+           required placeholder="email@address.com">
+           
+    <label for="message" hidden="true">Message</label>
+    <textarea class="form-control" name="message" placeholder="Message"
+              required rows="5"></textarea>
   </form>
   <!-- <div>
   <form action="https://formspree.io/eddyizm@me.com"
@@ -67,33 +51,21 @@
 </form>
   </div> -->
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function() {
-  $('#contact-form').submit(function(e) {
-      var email = $('#inputEmail')
-      var message = $('#inputMessage')
-    
-      if(email.val() == "" || message.val() == "") {
-        $('.submit-fail').fadeToggle(400);
-        return false;
-      }
-      else {
-        $.ajax({
-          method: 'POST',
-          url: '//formspree.io/eddyizm@me.com',
-          data: $('#contact-form').serialize(),
-          datatype: 'json'
-        });
-        e.preventDefault();
-        $(this).get(0).reset();
-        $('.submit-success').fadeToggle(400);
-      }
+$("#contact-form").validate({
+  submitHandler: function(form) {
+    $.ajax({
+      url: "//formspree.io/eddyizm@me.com", 
+      method: "POST",
+      data: {
+        _replyto: $(form).find("input[name='_replyto']").val(),
+        message: $(form).find("textarea[name='message']").val()
+      },
+      dataType: "json"
     });
-  
-  $('.submit-fail, .submit-success').click(function() {
-    $(this).hide();
-  })
+  }
 });
 </script>
   
