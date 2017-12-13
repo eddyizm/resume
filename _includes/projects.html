@@ -3,7 +3,7 @@
 </div>
 <div class="user-projects">
   <div class="images-right">
-    <img alt="mountains" src="{{ "/assets/img/mountains.jpg" | prepend: site.baseurl }}" />
+    <img alt="mountains" src="{{ " /assets/img/mountains.jpg " | prepend: site.baseurl }}" />
   </div>
   <div class="contents">
     <h3> Project Title </h3>
@@ -17,7 +17,7 @@
 </div>
 <div class="user-projects">
   <div class="images-left">
-    <img alt="mountains" src="{{ "/assets/img/skate.jpg" | prepend: site.baseurl }}" />
+    <img alt="mountains" src="{{ " /assets/img/skate.jpg " | prepend: site.baseurl }}" />
   </div>
   <div class="contents-right">
     <h3> Project Title </h3>
@@ -30,21 +30,27 @@
   </div>
 </div>
 
-<div class="user-details">
+<div id="contact" class="user-details">
   <h1> Contact </h1>
   <form id="contact-form">
     <div>
-      <label for="email" hidden="true">Email</label>
+      <label for="email" aria-hidden="true">Email</label>
       <input class="form-control" type="email" name="_replyto" required placeholder="email@address.com">
     </div>
     <div>
-      <label for="message" hidden="true">Message</label>
-      <textarea class="form-control" name="message" placeholder="Message" required rows="5"></textarea>
+      <label for="message" aria-hidden="true">Message</label>
+      <textarea class="form-control" name="message" placeholder="Message" required rows="2"></textarea>
     </div>
     <div>
       <button id="sendBtn" class="pr oject-link" type="submit">Send</button>
     </div>
   </form>
+  <div id="submit-success" class="collapse">
+    Message received! I'll be in touch.
+  </div>
+  <div id="submit-errors" class="collapse">
+    It looks like there was an error submitting the form. Please try again later.
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -59,7 +65,14 @@
           _replyto: $(form).find("input[name='_replyto']").val(),
           message: $(form).find("textarea[name='message']").val()
         },
-        dataType: "json"
+        dataType: "json",
+        success: function() {
+        $("#submit-success").fadeIn();
+        $("#contact-form").fadeOut();
+      },
+      error: function() {
+        $("#submit-errors").fadeIn();        
+      }
       });
     }
   });
