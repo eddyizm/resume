@@ -26,21 +26,24 @@
     </ul>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
       aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <a class="project-link" href="#">Check it out</a>
+    <a class="pr oject-link" href="#">Check it out</a>
   </div>
 </div>
 
 <div class="user-details">
   <h1> Contact </h1>
   <form id="contact-form">
-             
-    <label for="email" hidden="true">Email</label>
-    <input class="form-control" type="email" name="_replyto"
-           required placeholder="email@address.com">
-           
-    <label for="message" hidden="true">Message</label>
-    <textarea class="form-control" name="message" placeholder="Message"
-              required rows="5"></textarea>
+    <div>
+      <label for="email" hidden="true">Email</label>
+      <input class="form-control" type="email" name="_replyto" required placeholder="email@address.com">
+    </div>
+    <div>
+      <label for="message" hidden="true">Message</label>
+      <textarea class="form-control" name="message" placeholder="Message" required rows="5"></textarea>
+    </div>
+    <div>
+      <button id="sendBtn" class="pr oject-link" type="submit">Send</button>
+    </div>
   </form>
   <!-- <div>
   <form action="https://formspree.io/eddyizm@me.com"
@@ -54,18 +57,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-$("#contact-form").validate({
-  submitHandler: function(form) {
-    $.ajax({
-      url: "//formspree.io/eddyizm@me.com", 
-      method: "POST",
-      data: {
-        _replyto: $(form).find("input[name='_replyto']").val(),
-        message: $(form).find("textarea[name='message']").val()
-      },
-      dataType: "json"
-    });
-  }
-});
+  $("#contact-form").validate({
+    submitHandler: function (form) {
+      $.ajax({
+        url: "//formspree.io/eddyizm@me.com",
+        method: "POST",
+        data: {
+          _replyto: $(form).find("input[name='_replyto']").val(),
+          message: $(form).find("textarea[name='message']").val()
+        },
+        dataType: "json"
+      });
+    }
+  });
 </script>
-  
