@@ -15,6 +15,6 @@ github_username:  eddyizm
 
 # Google-analytics
 google-analytics:
-  id: ""
+  id: "UA-8727550-6"
 
 exclude: ['package.json', 'src' , 'node_modules']
