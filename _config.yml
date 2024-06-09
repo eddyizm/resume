@@ -1,13 +1,13 @@
 # Site settings
-title: Eduardo Cervantes | Software Developer
-description: Software Developer
+title: Eduardo Cervantes | Software Engineer
+description: Software Engineer
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
 # url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
 username: Eduardo Cervantes
 #user_description: Resume
-user_title: Software Developer
+user_title: Software Engineer
 #email: anon@anon.com
 #twitter_username: lorem_ipsum
 github_username:  eddyizm
